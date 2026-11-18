@@ -2,11 +2,18 @@ import puppeteer, { Page, Browser } from 'puppeteer';
 import path from 'path';
 import { format as prettyFormat } from 'pretty-format';
 
-let browser: Browser;
+let browser: any;
 
 beforeAll(async () => {
+    const isWindows = process.platform === 'win32';
+
     browser = await puppeteer.launch({
+        headless: true,
         args: ['--no-sandbox'],
+        // Используем твой локальный браузер на Windows
+        executablePath: isWindows
+            ? 'C:/Program Files/Yandex/YandexBrowser/Application/browser.exe'
+            : undefined,
     });
 });
 
