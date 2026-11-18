@@ -28,8 +28,5 @@ jobs:
             - name: Prepare
               run: npm install
 
-            - name: Install Puppeteer Browser
-              run: npx puppeteer browsers install chrome
-
             - name: Test
               run: npm run test
